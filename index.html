@@ -3,81 +3,1025 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Digital Solutions</title>
-    <!-- Tailwind CSS CDN for instant styling -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Aamir Digital — Local Digital Presence, Isiolo & Meru</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream:        #F7F2E8;
+            --cream-mid:    #EDE5D0;
+            --cream-border: #D8CEBC;
+            --green:        #1C3D2B;
+            --green-mid:    #2A5C3F;
+            --green-light:  #3A7D55;
+            --gold:         #B8963E;
+            --gold-light:   #D4AF6A;
+            --text:         #1C3D2B;
+            --muted:        #5E7265;
+        }
+
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--cream);
+            color: var(--text);
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 300;
+            overflow-x: hidden;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeUp {
+            from { opacity:0; transform:translateY(28px); }
+            to   { opacity:1; transform:translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity:0; }
+            to   { opacity:1; }
+        }
+        @keyframes lineGrow {
+            from { transform: scaleX(0); }
+            to   { transform: scaleX(1); }
+        }
+
+        .reveal { opacity:0; animation: fadeUp 0.7s ease forwards; }
+        .reveal-1 { animation-delay: 0.1s; }
+        .reveal-2 { animation-delay: 0.25s; }
+        .reveal-3 { animation-delay: 0.4s; }
+        .reveal-4 { animation-delay: 0.55s; }
+        .reveal-5 { animation-delay: 0.7s; }
+
+        /* ===== HEADER ===== */
+        header {
+            background: var(--green);
+            padding: 18px 56px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky; top:0; z-index:100;
+            border-bottom: 1px solid rgba(184,150,62,0.25);
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: var(--cream);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+        .logo span { color: var(--gold); }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 36px;
+            list-style: none;
+        }
+        .nav-links a {
+            font-size: 0.75rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: rgba(247,242,232,0.65);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--cream); }
+
+        .nav-wa {
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold) !important;
+            padding: 8px 20px;
+            transition: background 0.2s, color 0.2s !important;
+        }
+        .nav-wa:hover {
+            background: var(--gold) !important;
+            color: var(--green) !important;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            background: var(--green);
+            min-height: 92vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* decorative background circles */
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+        .hero-bg circle { fill: none; stroke: rgba(184,150,62,0.07); }
+
+        .hero-left {
+            padding: 80px 56px 80px 56px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.7rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 28px;
+            reveal reveal-1;
+        }
+        .hero-eyebrow::before {
+            content:'';
+            display:block;
+            width:28px; height:1px;
+            background: var(--gold);
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 5vw, 5rem);
+            font-weight: 700;
+            color: var(--cream);
+            line-height: 1.08;
+            margin-bottom: 28px;
+        }
+        .hero h1 em {
+            font-style: italic;
+            color: var(--gold-light);
+        }
+
+        .hero-sub {
+            color: rgba(247,242,232,0.62);
+            font-size: 1rem;
+            line-height: 1.85;
+            max-width: 440px;
+            margin-bottom: 44px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .btn-wa {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #25D366;
+            color: #fff;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+            font-size: 0.82rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 14px 28px;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.15s;
+        }
+        .btn-wa:hover { background: #1ebe5a; transform: translateY(-2px); }
+        .btn-wa svg { width:18px; height:18px; fill:#fff; flex-shrink:0; }
+
+        .btn-ghost {
+            display: inline-block;
+            background: transparent;
+            color: var(--cream);
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 400;
+            font-size: 0.82rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 14px 28px;
+            text-decoration: none;
+            border: 1px solid rgba(247,242,232,0.3);
+            transition: border-color 0.2s;
+        }
+        .btn-ghost:hover { border-color: var(--cream); }
+
+        /* Hero right — decorative map pin panel */
+        .hero-right {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 48px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-card {
+            background: rgba(247,242,232,0.06);
+            border: 1px solid rgba(184,150,62,0.25);
+            padding: 40px 36px;
+            max-width: 340px;
+            width: 100%;
+            animation: fadeIn 1s ease 0.5s both;
+        }
+
+        .hero-card-label {
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .hero-stat {
+            border-bottom: 1px solid rgba(247,242,232,0.1);
+            padding: 16px 0;
+        }
+        .hero-stat:last-child { border-bottom: none; }
+
+        .hero-stat-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--cream);
+            line-height: 1;
+        }
+        .hero-stat-desc {
+            font-size: 0.78rem;
+            color: rgba(247,242,232,0.5);
+            margin-top: 4px;
+            letter-spacing: 0.04em;
+        }
+
+        /* ===== DIVIDER ===== */
+        .strip {
+            background: var(--cream-mid);
+            border-top: 1px solid var(--cream-border);
+            border-bottom: 1px solid var(--cream-border);
+            padding: 14px 56px;
+            display: flex;
+            justify-content: center;
+            gap: 56px;
+            flex-wrap: wrap;
+        }
+        .strip span {
+            font-size: 0.68rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--muted);
+            font-weight: 600;
+        }
+
+        /* ===== PROBLEM SECTION ===== */
+        .problem {
+            padding: 96px 56px;
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .problem-left h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 3.5vw, 3rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        .problem-left h2 em { font-style: italic; color: var(--green-mid); }
+
+        .problem-left p {
+            color: var(--muted);
+            font-size: 0.95rem;
+            line-height: 1.85;
+            margin-bottom: 16px;
+        }
+
+        .problem-right {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .problem-point {
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
+            padding: 22px 24px;
+            background: var(--cream-mid);
+            border-left: 3px solid var(--gold);
+        }
+
+        .problem-icon {
+            width: 36px; height: 36px;
+            background: var(--green);
+            color: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .problem-point h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: var(--text);
+        }
+        .problem-point p {
+            font-size: 0.82rem;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        /* ===== HOW IT WORKS ===== */
+        .process {
+            background: var(--green);
+            padding: 96px 56px;
+        }
+        .process-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-eyebrow {
+            font-size: 0.68rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .section-title-light {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 3.5vw, 3rem);
+            font-weight: 700;
+            color: var(--cream);
+            margin-bottom: 64px;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+        }
+
+        .step {
+            background: rgba(247,242,232,0.04);
+            border: 1px solid rgba(184,150,62,0.15);
+            padding: 40px 32px;
+            position: relative;
+            transition: background 0.2s;
+        }
+        .step:hover { background: rgba(247,242,232,0.07); }
+
+        .step-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: rgba(184,150,62,0.18);
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+
+        .step h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--cream);
+            margin-bottom: 12px;
+        }
+
+        .step p {
+            font-size: 0.85rem;
+            color: rgba(247,242,232,0.55);
+            line-height: 1.8;
+        }
+
+        .step-tag {
+            display: inline-block;
+            margin-top: 20px;
+            font-size: 0.65rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 600;
+            border-bottom: 1px solid var(--gold);
+            padding-bottom: 2px;
+        }
+
+        /* ===== PRICING ===== */
+        .pricing {
+            padding: 96px 56px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pricing-header {
+            margin-bottom: 56px;
+        }
+
+        .section-eyebrow-dark {
+            font-size: 0.68rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .section-title-dark {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 3.5vw, 3rem);
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            align-items: start;
+        }
+
+        .plan {
+            border: 1px solid var(--cream-border);
+            background: var(--cream);
+            padding: 40px 32px;
+            position: relative;
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+        .plan:hover {
+            box-shadow: 0 16px 48px rgba(28,61,43,0.1);
+            transform: translateY(-4px);
+        }
+
+        .plan.featured {
+            background: var(--green);
+            border-color: var(--gold);
+        }
+
+        .plan-badge {
+            position: absolute;
+            top: -13px; left: 32px;
+            background: var(--gold);
+            color: var(--green);
+            font-size: 0.62rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            font-weight: 700;
+            padding: 4px 12px;
+        }
+
+        .plan-tier {
+            font-size: 0.68rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--muted);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .plan.featured .plan-tier { color: rgba(247,242,232,0.5); }
+
+        .plan-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 6px;
+        }
+        .plan.featured .plan-name { color: var(--cream); }
+
+        .plan-subtitle {
+            font-size: 0.78rem;
+            color: var(--muted);
+            margin-bottom: 28px;
+            padding-bottom: 28px;
+            border-bottom: 1px solid var(--cream-border);
+        }
+        .plan.featured .plan-subtitle { color: rgba(247,242,232,0.5); border-color: rgba(247,242,232,0.12); }
+
+        .plan-price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--text);
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+        .plan.featured .plan-price { color: var(--gold-light); }
+
+        .plan-price-note {
+            font-size: 0.72rem;
+            color: var(--muted);
+            margin-bottom: 32px;
+        }
+        .plan.featured .plan-price-note { color: rgba(247,242,232,0.4); }
+
+        .plan-features {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 36px;
+        }
+
+        .plan-features li {
+            font-size: 0.85rem;
+            color: var(--muted);
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            line-height: 1.5;
+        }
+        .plan.featured .plan-features li { color: rgba(247,242,232,0.7); }
+
+        .plan-features li::before {
+            content: '✓';
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .plan-cta {
+            display: block;
+            text-align: center;
+            padding: 13px 24px;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+            font-size: 0.78rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: 1px solid var(--green);
+            color: var(--green);
+            transition: background 0.2s, color 0.2s;
+        }
+        .plan-cta:hover { background: var(--green); color: var(--cream); }
+
+        .plan.featured .plan-cta {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--green);
+        }
+        .plan.featured .plan-cta:hover { background: var(--gold-light); border-color: var(--gold-light); }
+
+        /* ===== TESTIMONIALS PLACEHOLDER ===== */
+        .social-proof {
+            background: var(--cream-mid);
+            border-top: 1px solid var(--cream-border);
+            border-bottom: 1px solid var(--cream-border);
+            padding: 80px 56px;
+        }
+        .social-proof-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+
+        .testimonial {
+            background: var(--cream);
+            border: 1px solid var(--cream-border);
+            padding: 32px 28px;
+        }
+
+        .testimonial-quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.05rem;
+            font-style: italic;
+            color: var(--text);
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .testimonial-avatar {
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            background: var(--cream-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            color: var(--muted);
+            font-weight: 600;
+        }
+
+        .testimonial-name {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+        .testimonial-biz {
+            font-size: 0.72rem;
+            color: var(--muted);
+        }
+
+        .placeholder-note {
+            text-align: center;
+            font-size: 0.72rem;
+            color: var(--muted);
+            letter-spacing: 0.06em;
+            margin-top: 12px;
+            font-style: italic;
+        }
+
+        /* ===== CTA ===== */
+        .cta {
+            background: var(--green);
+            padding: 96px 56px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            bottom: -120px; right: -120px;
+            width: 400px; height: 400px;
+            border-radius: 50%;
+            border: 1px solid rgba(184,150,62,0.1);
+            pointer-events: none;
+        }
+
+        .cta-inner {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-gold-line {
+            width: 40px; height: 2px;
+            background: var(--gold);
+            margin: 0 auto 28px;
+        }
+
+        .cta h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 700;
+            color: var(--cream);
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        .cta p {
+            color: rgba(247,242,232,0.6);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #111f17;
+            padding: 36px 56px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            border-top: 1px solid rgba(184,150,62,0.2);
+        }
+
+        .footer-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--cream);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+        .footer-logo span { color: var(--gold); }
+
+        .footer-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+        .footer-links a {
+            font-size: 0.72rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(247,242,232,0.4);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .footer-links a:hover { color: var(--cream); }
+
+        .footer-copy {
+            font-size: 0.72rem;
+            color: rgba(247,242,232,0.25);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            header { padding: 16px 24px; }
+            .nav-links { display: none; }
+            .hero { grid-template-columns: 1fr; min-height: auto; }
+            .hero-left { padding: 64px 24px 40px; }
+            .hero-right { display: none; }
+            .problem { grid-template-columns: 1fr; gap: 40px; padding: 64px 24px; }
+            .process { padding: 64px 24px; }
+            .steps { grid-template-columns: 1fr; gap: 2px; }
+            .pricing { padding: 64px 24px; }
+            .pricing-grid { grid-template-columns: 1fr; }
+            .social-proof { padding: 64px 24px; }
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .cta { padding: 64px 24px; }
+            .strip { padding: 14px 24px; gap: 20px; }
+            footer { padding: 28px 24px; flex-direction: column; text-align: center; }
+            .footer-links { justify-content: center; }
+        }
+    </style>
 </head>
-<body class="bg-gray-50 text-gray-900 font-sans antialiased">
+<body>
 
-    <!-- Header / Navbar -->
-    <header class="bg-white border-b border-gray-100 sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-xl font-bold tracking-tight text-indigo-600">AGENCY.AI</div>
-            <a href="#contact" class="bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-all shadow-sm">Get Started</a>
-        </div>
-    </header>
+<!-- HEADER -->
+<header>
+    <div class="logo">Aamir <span>Digital</span></div>
+    <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#process">How It Works</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="https://wa.me/254106841028" target="_blank" class="nav-wa">WhatsApp Us</a></li>
+    </ul>
+</header>
 
-    <!-- Hero Section -->
-    <section class="max-w-5xl mx-auto px-6 pt-16 pb-20 text-center">
-        <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-gray-900 mb-6">
-            Transform Your Business with <span class="text-indigo-600">Automated Strategy</span>
-        </h1>
-        <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
-            We build high-converting digital infrastructure, automated workflows, and modern web platforms tailored to scale your local brand effortlessly.
-        </p>
-        <div class="flex justify-center gap-4">
-            <a href="#contact" class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium px-6 py-3 rounded-xl transition-all shadow-md">Book a Strategy Call</a>
-            <a href="#services" class="bg-white hover:bg-gray-50 text-gray-700 border border-gray-200 font-medium px-6 py-3 rounded-xl transition-all">View Work</a>
-        </div>
-    </section>
+<!-- HERO -->
+<section class="hero">
+    <svg class="hero-bg" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="700" cy="100" r="300"/>
+        <circle cx="700" cy="100" r="480"/>
+        <circle cx="700" cy="100" r="660"/>
+    </svg>
 
-    <!-- Services Grid Section -->
-    <section id="services" class="bg-white py-16 border-t border-b border-gray-100">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-gray-900">Our Services</h2>
-                <p class="text-gray-500 mt-2">Engineered for growth, optimization, and absolute clarity.</p>
-            </div>
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Service 1 -->
-                <div class="p-6 bg-gray-50 rounded-2xl border border-gray-100">
-                    <div class="w-10 h-10 bg-indigo-100 text-indigo-600 flex items-center justify-center rounded-xl font-bold mb-4">01</div>
-                    <h3 class="text-xl font-bold mb-2">Web Development</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">Lightning-fast, mobile-responsive landing pages built to turn casual visitors into paying customers.</p>
-                </div>
-                <!-- Service 2 -->
-                <div class="p-6 bg-gray-50 rounded-2xl border border-gray-100">
-                    <div class="w-10 h-10 bg-indigo-100 text-indigo-600 flex items-center justify-center rounded-xl font-bold mb-4">02</div>
-                    <h3 class="text-xl font-bold mb-2">AI Automation</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">Custom workflow pipelines and agentic systems that eliminate repetitive, manual business tasks.</p>
-                </div>
-                <!-- Service 3 -->
-                <div class="p-6 bg-gray-50 rounded-2xl border border-gray-100">
-                    <div class="w-10 h-10 bg-indigo-100 text-indigo-600 flex items-center justify-center rounded-xl font-bold mb-4">03</div>
-                    <h3 class="text-xl font-bold mb-2">Digital Strategy</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">End-to-end operational roadmaps crafted to pitch, position, and dominate your specific local market tier.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Call to Action Section -->
-    <section id="contact" class="max-w-4xl mx-auto px-6 py-20 text-center">
-        <div class="bg-gradient-to-br from-indigo-600 to-indigo-800 text-white rounded-3xl p-8 md:p-12 shadow-xl">
-            <h2 class="text-3xl font-bold mb-4">Ready to build your digital asset?</h2>
-            <p class="text-indigo-100 max-w-xl mx-auto mb-8 text-sm md:text-base">
-                Let's discuss how a custom-tailored system can optimize your revenue, free up your time, and elevate your operations.
-            </p>
-            <a href="mailto:your-email@example.com" class="bg-white hover:bg-gray-100 text-indigo-600 font-semibold px-6 py-3 rounded-xl transition-all inline-block">
-                Contact Our Team
+    <div class="hero-left">
+        <div class="hero-eyebrow reveal reveal-1">Isiolo & Meru · Local Digital Services</div>
+        <h1 class="reveal reveal-2">We Put Your Business<br>on the Map —<br><em>Literally.</em></h1>
+        <p class="hero-sub reveal reveal-3">Most local businesses in Isiolo and Meru are invisible online. Customers search, can't find you, and go elsewhere. We fix that — fast.</p>
+        <div class="hero-buttons reveal reveal-4">
+            <a href="https://wa.me/254106841028" target="_blank" class="btn-wa">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Chat on WhatsApp
             </a>
+            <a href="#pricing" class="btn-ghost">View Packages</a>
         </div>
-    </section>
+    </div>
 
-    <!-- Footer -->
-    <footer class="text-center py-8 text-xs text-gray-400 border-t border-gray-100">
-        &copy; 2026 AGENCY.AI. All rights reserved. Built entirely via mobile pipeline.
-    </footer>
+    <div class="hero-right">
+        <div class="hero-card reveal reveal-3">
+            <div class="hero-card-label">What we deliver</div>
+            <div class="hero-stat">
+                <div class="hero-stat-num">Google</div>
+                <div class="hero-stat-desc">Business Profile — verified & optimised</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-num">WhatsApp</div>
+                <div class="hero-stat-desc">Business account connected to your profile</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-num">Reviews</div>
+                <div class="hero-stat-desc">QR flyer to collect customer reviews instantly</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-num">Visible</div>
+                <div class="hero-stat-desc">Appearing when Isiolo & Meru customers search</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TRUST STRIP -->
+<div class="strip">
+    <span>Google Business Profile</span>
+    <span>WhatsApp Business</span>
+    <span>Local SEO</span>
+    <span>Review Management</span>
+    <span>Digital Catalogues</span>
+</div>
+
+<!-- PROBLEM SECTION -->
+<section class="problem">
+    <div class="problem-left">
+        <h2>Your customers are searching.<br><em>Can they find you?</em></h2>
+        <p>Restaurants, boutiques, salons, cleaning services — every local business in Isiolo and Meru loses customers daily to competitors who are simply more visible online.</p>
+        <p>You don't need a big budget. You need the right foundation — and we build it for you.</p>
+    </div>
+    <div class="problem-right">
+        <div class="problem-point">
+            <div class="problem-icon">✗</div>
+            <div>
+                <h4>Not on Google Maps</h4>
+                <p>Customers searching "restaurant near me" or "salon in Isiolo" won't find you if you're not listed and verified.</p>
+            </div>
+        </div>
+        <div class="problem-point">
+            <div class="problem-icon">✗</div>
+            <div>
+                <h4>No WhatsApp Business</h4>
+                <p>Enquiries go unanswered or feel unprofessional. A proper Business profile builds immediate trust.</p>
+            </div>
+        </div>
+        <div class="problem-point">
+            <div class="problem-icon">✗</div>
+            <div>
+                <h4>Zero Reviews Online</h4>
+                <p>New customers rely on reviews. Without them, they choose your competitor — even if your service is better.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="process" class="process">
+    <div class="process-inner">
+        <div class="section-eyebrow">The Process</div>
+        <h2 class="section-title-light">Simple. Fast. Done.</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-num">01</div>
+                <h3>We Audit</h3>
+                <p>We assess your current online presence — or lack of one — and map out exactly what needs to be built for your business type and location.</p>
+                <span class="step-tag">Day 1</span>
+            </div>
+            <div class="step">
+                <div class="step-num">02</div>
+                <h3>We Build</h3>
+                <p>We set up and optimise your Google Business Profile, connect WhatsApp Business, write your business description, upload photos, and configure everything correctly.</p>
+                <span class="step-tag">Days 2–5</span>
+            </div>
+            <div class="step">
+                <div class="step-num">03</div>
+                <h3>You Launch</h3>
+                <p>We hand everything over, show you how to manage it, and you're live — visible on Google, reachable on WhatsApp, ready to receive customers.</p>
+                <span class="step-tag">Day 7</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="pricing">
+    <div class="pricing-header">
+        <div class="section-eyebrow-dark">Transparent Pricing</div>
+        <h2 class="section-title-dark">One-Time Local Digital Services</h2>
+    </div>
+    <div class="pricing-grid">
+
+        <!-- Tier 1 -->
+        <div class="plan">
+            <div class="plan-tier">Tier 1</div>
+            <div class="plan-name">The Foundation</div>
+            <div class="plan-subtitle">Setup & Visibility</div>
+            <div class="plan-price">KES 3,500</div>
+            <div class="plan-price-note">One-time fee · No hidden costs</div>
+            <ul class="plan-features">
+                <li>Google Business Profile creation & verification</li>
+                <li>Essential business information setup</li>
+                <li>Basic local listing optimisation</li>
+                <li>WhatsApp Business connection</li>
+            </ul>
+            <a href="https://wa.me/254106841028?text=Hi%20Aamir%20Digital%2C%20I'm%20interested%20in%20the%20Foundation%20package%20(KES%203%2C500)" target="_blank" class="plan-cta">Get Started</a>
+        </div>
+
+        <!-- Tier 2 -->
+        <div class="plan featured">
+            <div class="plan-badge">Most Popular</div>
+            <div class="plan-tier">Tier 2</div>
+            <div class="plan-name">The Growth Engine</div>
+            <div class="plan-subtitle">Visibility + Acquisition</div>
+            <div class="plan-price">KES 8,500</div>
+            <div class="plan-price-note">One-time fee · Includes everything in Tier 1</div>
+            <ul class="plan-features">
+                <li>Everything in The Foundation</li>
+                <li>Deep local SEO & keyword optimisation</li>
+                <li>Custom QR code review flyer for your location</li>
+                <li>Competitor positioning analysis</li>
+                <li>Photo & description copywriting</li>
+            </ul>
+            <a href="https://wa.me/254106841028?text=Hi%20Aamir%20Digital%2C%20I'm%20interested%20in%20the%20Growth%20Engine%20package%20(KES%208%2C500)" target="_blank" class="plan-cta">Get Started</a>
+        </div>
+
+        <!-- Tier 3 -->
+        <div class="plan">
+            <div class="plan-tier">Tier 3</div>
+            <div class="plan-name">The Market Dominator</div>
+            <div class="plan-subtitle">Premium Presence & Handoff</div>
+            <div class="plan-price">KES 15,000<span style="font-size:1.4rem">+</span></div>
+            <div class="plan-price-note">One-time fee · Full-service package</div>
+            <ul class="plan-features">
+                <li>Everything in The Growth Engine</li>
+                <li>Premium digital catalogue / mini landing page</li>
+                <li>Formal staff training & handoff session</li>
+                <li>30-day post-launch support</li>
+            </ul>
+            <a href="https://wa.me/254106841028?text=Hi%20Aamir%20Digital%2C%20I'm%20interested%20in%20the%20Market%20Dominator%20package%20(KES%2015%2C000%2B)" target="_blank" class="plan-cta">Get Started</a>
+        </div>
+
+    </div>
+</section>
+
+<!-- SOCIAL PROOF -->
+<section class="social-proof">
+    <div class="social-proof-inner">
+        <div class="section-eyebrow-dark">What Clients Say</div>
+        <h2 class="section-title-dark" style="margin-bottom:0;">Early Results</h2>
+        <p class="placeholder-note">⟡ Testimonials will appear here as we grow — spots reserved for our first clients.</p>
+
+        <div class="testimonials-grid">
+            <div class="testimonial">
+                <div class="testimonial-quote">"Our restaurant now appears on Google Maps — we've had customers walk in saying they found us online for the first time."</div>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">R</div>
+                    <div>
+                        <div class="testimonial-name">Restaurant Owner, Isiolo</div>
+                        <div class="testimonial-biz">Placeholder · Coming Soon</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial">
+                <div class="testimonial-quote">"Setting up WhatsApp Business made us look so much more professional. Clients message us directly now instead of calling random numbers."</div>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">B</div>
+                    <div>
+                        <div class="testimonial-name">Boutique Owner, Meru</div>
+                        <div class="testimonial-biz">Placeholder · Coming Soon</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial">
+                <div class="testimonial-quote">"Within two weeks of getting our Google profile set up, we started receiving review requests and new enquiries from people we'd never met."</div>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">C</div>
+                    <div>
+                        <div class="testimonial-name">Cleaning Service, Meru</div>
+                        <div class="testimonial-biz">Placeholder · Coming Soon</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section id="contact" class="cta">
+    <div class="cta-inner">
+        <div class="cta-gold-line"></div>
+        <h2>Ready to Get Found<br>in Isiolo & Meru?</h2>
+        <p>Message us on WhatsApp and we'll assess your current online presence for free — no commitment required.</p>
+        <div class="cta-buttons">
+            <a href="https://wa.me/254106841028?text=Hi%20Aamir%20Digital%2C%20I'd%20like%20a%20free%20online%20presence%20check%20for%20my%20business" target="_blank" class="btn-wa">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Get a Free Assessment
+            </a>
+            <a href="#pricing" class="btn-ghost">View Packages</a>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-logo">Aamir <span>Digital</span></div>
+    <ul class="footer-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="https://wa.me/254106841028" target="_blank">WhatsApp</a></li>
+    </ul>
+    <div class="footer-copy">&copy; 2026 Aamir Digital · Isiolo & Meru</div>
+</footer>
 
 </body>
 </html>
